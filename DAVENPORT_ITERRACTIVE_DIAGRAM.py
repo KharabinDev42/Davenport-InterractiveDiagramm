@@ -21,6 +21,12 @@ import win32api
 import win32print
 import tempfile
 
+
+
+LanguageBUTTOnFRVARget = 'FR'
+
+
+
 def installed_printer():
     printers = win32print.EnumPrinters(2)
     for p in printers:
@@ -87,8 +93,8 @@ def print_file():
 
 
 
-window  = ttk.Window(themename="marcoooo")
-
+#window  = ttk.Window(themename="marcoooo")
+window  = ttk.Window(themename="darkly")
 
 
 window.title("yoo")
@@ -100,16 +106,39 @@ drawn =0
 SETINGSFRAME = ttk.Frame(window,bootstyle="dark")
 SETINGSFRAME.pack(side=LEFT, padx=15, pady=15)
 
+SETINGLANGUAGE = ttk.Frame(SETINGSFRAME,bootstyle="dark")
+SETINGLANGUAGE.pack(side=TOP, padx=0, pady=0)
 
 
-CONCLUSIONLabel = ttk.Labelframe(SETINGSFRAME,text ="ETAT DU PATIENT",bootstyle="light")
-CONCLUSIONLabel.pack(side=TOP, padx=2, pady=10, fill =X)
+LanguageBUTTOnFRVAR = tk.StringVar() 
+LanguageBUTTOnFRVAR.set('FR')
+
+LanguageBUTTOnFR = ttk.Radiobutton(SETINGLANGUAGE,bootstyle="toolbutton, secondary", text='FR',variable=LanguageBUTTOnFRVAR, value='FR') 
+LanguageBUTTOnFR.pack(side=LEFT, padx=1, pady=1)
+
+
+LanguageBUTTOnEN = ttk.Radiobutton(SETINGLANGUAGE,bootstyle="toolbutton, secondary",text='EN',variable=LanguageBUTTOnFRVAR, value='EN')
+LanguageBUTTOnEN.pack(side=LEFT, padx=1, pady=1)
+
+
+
+if LanguageBUTTOnFRVAR == 'FR':
+    LanguageBUTTOnFRVARget ="Etat du patient"
+if LanguageBUTTOnFRVAR=='EN':
+    LanguageBUTTOnFRVARget ="Patient state"
+
+
+
+
+
+CONCLUSIONLabel = ttk.Labelframe(SETINGSFRAME,text ="Etat du patient",bootstyle="light")
+CONCLUSIONLabel.pack(side=TOP, padx=2, pady=5, fill =X)
 
 STATTE = ttk.Label(CONCLUSIONLabel,bootstyle="info",text ="EQUILIBRE",font ='-size 25 -weight bold')
 STATTE.pack(side=TOP, padx=15, pady=15)
 
 PARAMETERSLabel = ttk.Labelframe(SETINGSFRAME,text ="Paramètres",bootstyle="light")
-PARAMETERSLabel.pack(side=BOTTOM, padx=2, pady=10)
+PARAMETERSLabel.pack(side=BOTTOM, padx=2, pady=5)
 
 
 
@@ -118,24 +147,24 @@ PARAMETERSLabel.pack(side=BOTTOM, padx=2, pady=10)
 BICAR = 24
 
 PHFRAME = ttk.Labelframe(PARAMETERSLabel,text ="PH",bootstyle="PRIMARY")
-PHFRAME.pack(expand = YES,side=BOTTOM, padx=2, pady=10)
+PHFRAME.pack(expand = YES,side=BOTTOM, padx=2, pady=3)
 
 
 
 
 BICFRAME = ttk.Labelframe(PARAMETERSLabel,text ="HCO3-",bootstyle="PRIMARY")
-BICFRAME.pack(side=LEFT, padx=2, pady=10)
+BICFRAME.pack(side=LEFT, padx=2, pady=2)
 
 
 radioValuePHH = tk.IntVar() 
 radioValuePHH.set(7)
 
 SIXXPH = ttk.Radiobutton(PHFRAME,bootstyle="toolbutton, warning", text='6',variable=radioValuePHH, value=6) 
-SIXXPH.pack(side=LEFT, padx=3, pady=10,fill= X)
+SIXXPH.pack(side=LEFT, padx=3, pady=5,fill= X)
 
 
 SEPTTTPH = ttk.Radiobutton(PHFRAME,bootstyle="toolbutton, warning",text='7',variable=radioValuePHH, value=7)
-SEPTTTPH.pack(side=LEFT, padx=3, pady=10,fill= X)
+SEPTTTPH.pack(side=LEFT, padx=3, pady=5,fill= X)
 
 COMAA = ttk.Label(PHFRAME,bootstyle=" warning",text=',')
 COMAA.pack(side=LEFT, padx=3, pady=10)
@@ -163,7 +192,7 @@ test44 = ttk.Meter(BICFRAME,
 test44.pack(side=LEFT, padx=3, pady=10)
 
 PENTEFRAME = ttk.LabelFrame(PARAMETERSLabel,text ="PENTE",bootstyle="PRIMARY")
-PENTEFRAME.pack(side=BOTTOM, padx=2, pady=10)
+PENTEFRAME.pack(side=BOTTOM, padx=2, pady=2)
 
 radioValue = tk.IntVar() 
 radioValue.set(25)
@@ -187,15 +216,6 @@ trente.pack(side=RIGHT, padx=3, pady=10)
 
 
 
-def SAVEE():
-    global plot1
-    global fig
-
-    global drawn
-    
-
-    if drawn !=0:
-        fig.savefig('C:/Users/marcb/OneDrive/Bureau/books_read.png')
 
 def browsefunc():
     global plot1
@@ -204,7 +224,7 @@ def browsefunc():
     if file :
         abs_path = os.path.abspath(file.name)
         fig.savefig(abs_path) # saves the image to the input file name.
-        print('oh')
+        
 
 PURETEEFRAME = ttk.Labelframe(PARAMETERSLabel,text ="Puretée",bootstyle="light")
 PURETEEFRAME.pack(side=TOP, padx=2, pady=10, fill =X)
@@ -213,11 +233,11 @@ PURETEESTATTE = ttk.Label(PURETEEFRAME,bootstyle="info",text =" ",font ='-size 1
 PURETEESTATTE.pack(side=TOP, padx=15, pady=15)
 
 PRINTT2 = ttk.Button(PARAMETERSLabel,text ="Enregistrer + imprimer",bootstyle="PRIMARY", command = print_file)
-PRINTT2.pack(side=BOTTOM, padx=2, pady=3, fill =X)
+PRINTT2.pack(side=BOTTOM, padx=1, pady=3, fill =X)
 
 
 SAVEEE = ttk.Button(PARAMETERSLabel,text ="Enregistrer l'image sous",bootstyle="PRIMARY", command = browsefunc)
-SAVEEE.pack(side=BOTTOM, padx=2, pady=3, fill =X)
+SAVEEE.pack(side=BOTTOM, padx=1, pady=3, fill =X)
 
 
 m = ttk.Menu(window, tearoff = 0)
@@ -233,13 +253,13 @@ m.add_command(label ="Rename")
 def _on_mousewheel(event):
     steppQ = (-1 *(event.delta/ 120))
     test43.step(steppQ)
-    print('dvscv')
+    
 
     
 
 stateclickR = None
 def Activate_change(event):
-    print('sh   ')
+    
     
     global stateclickR 
 
@@ -268,7 +288,7 @@ def _on_mousewheelBIC(event):
 
 stateclickRBIC = None
 def Activate_changeBIC(event):
-    print('sh   ')
+    
     
     global stateclickRBIC 
 
@@ -295,21 +315,21 @@ def Activate_changeBIC(event):
    
 
 def HighlightAndGo(event):
-    print('cheh ')
+    
     test43.configure(bootstyle=INFO)
     #test43.unbind_all("<Button-1>")
     test43.unbind_all("<MouseWheel>")
     
 
 def hover_this_enter(event):
-    print('we ')
+    
     #test43.configure(interactive=True)
     test43.configure(bootstyle=WARNING)
     test43.bind_all("<Button-1>",Activate_change)
     
                            
 def hover_this_leave(event):   
-    print(' alors')
+    
     test43.configure(bootstyle=SUCCESS,interactive=False)
     test43.unbind_all("<MouseWheel>")
     test43.configure( textfont ='-size 20 -weight bold', stripethickness=2)
@@ -317,11 +337,11 @@ def hover_this_leave(event):
     
     ph= test43.amountusedvar.get()
 
-    ####phbase= test42.amountusedvar.get()
+   
     
     BICAR = test44.amountusedvar.get()
 
-    #print(ph)
+    
     global radioValue
     radioValueee = radioValue.get()
    
@@ -343,13 +363,12 @@ def hover_this_leave(event):
 
 
 def hover_this_enterBIC(event):
-    print('svsvdsv')
+    
     test44.configure(bootstyle=WARNING)
     test44.bind_all("<Button-1>",Activate_changeBIC)
 
 def hover_this_leaveBIC(event):
-    print('vsdv')
-    print(' alors')
+    
     test44.configure(bootstyle=SUCCESS,interactive=False)
     test44.unbind_all("<MouseWheel>")
     test44.configure( textfont ='-size 20 -weight bold', stripethickness=2)
@@ -357,11 +376,11 @@ def hover_this_leaveBIC(event):
     
     ph= test43.amountusedvar.get()
 
-    ####phbase= test42.amountusedvar.get()
+ 
     
     BICAR = test44.amountusedvar.get()
 
-    #print(ph)
+   
     global radioValue
     radioValueee = radioValue.get()
    
@@ -499,7 +518,7 @@ def plot(phbase,ph,BICAR,radioValue):
        
         PCO2=round(PCO2,2)
         PCO2 = str(PCO2)
-        plot1.annotate((PCO2+'mmHg'),((xu+0.02),(BICAR+0.5)),color = "darkgreen",weight="bold")
+        plot1.annotate((PCO2+'mmHg (PaC02)'),((xu+0.02),(BICAR+0.5)),color = "darkgreen",weight="bold")
 
 
         if radioValue ==5:
@@ -567,6 +586,9 @@ def plot(phbase,ph,BICAR,radioValue):
     
 def STATEDEFINER(ph,bic,pente,phbase):
 
+    Language = LanguageBUTTOnFRVAR.get()
+
+   
     purete =''
 
     
@@ -575,9 +597,18 @@ def STATEDEFINER(ph,bic,pente,phbase):
     ph = phbase+(ph*0.01)
 
     if ph< 7.38:
-        state ='Acidose'
+        if Language == 'FR':
+             state ='Acidose'
+
+        if Language == 'EN':
+             state ='Acidosis'
+
+        
         if bic >= 26:
-            state ='Acidose respiratoire'
+            if Language == 'FR':
+                state ='Acidose respiratoire'
+            if Language == 'EN':
+                state ='respiratory acidosis'
             if ph<7.15:
                 state ='Acidose'
                 purete ='MIXTE'
@@ -647,8 +678,42 @@ plot(7,40,24,25)
 
 
 def UpdatePlot(ph):
-    print('coolll')
+    print('test')
 
+
+
+def TRADUCTOR(event): 
+    LanguageBUTTOnFRVARget = LanguageBUTTOnFRVAR.get()
+
+    if LanguageBUTTOnFRVARget == 'FR':
+        CONCLUSIONLabel.config(text = "Etat du patient")
+        #STATTE.config(text = "")
+        PARAMETERSLabel.config(text = "paramètres")
+        PHFRAME.config(text = "PH")
+        BICFRAME.config(text = "HCO3-")
+        PENTEFRAME.config(text = "Pente")
+        PURETEEFRAME.config(text = "Compensation")
+        #PURETEESTATTE.config(text = "")
+        PRINTT2.config(text = "Enregistrer et imprimer")
+        SAVEEE.config(text = "Enregistrer l'image sous")
+        test43.configure(subtext='ph étalonage fin')
+    if LanguageBUTTOnFRVARget == 'EN':
+        CONCLUSIONLabel.config(text = "Patient State")
+        #STATTE.config(text = "")
+        PARAMETERSLabel.config(text = "settings")
+        PHFRAME.config(text = "PH")
+        BICFRAME.config(text = "HCO3-")
+        PENTEFRAME.config(text = "PENTE")
+        PURETEEFRAME.config(text = "Compensation")
+        #PURETEESTATTE.config(text = "")
+        PRINTT2.config(text = "Save and print")
+        SAVEEE.config(text = "Save image as")
+        test43.configure(subtext='fine ph tunning')
+
+
+
+LanguageBUTTOnFR.bind("<Button-1>", TRADUCTOR)
+LanguageBUTTOnEN.bind("<Button-1>", TRADUCTOR)
 
 window.mainloop()
 
