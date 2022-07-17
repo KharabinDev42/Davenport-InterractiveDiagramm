@@ -4,4 +4,6 @@ This is an interractive davenport diagramm, it can be used for learning purposes
 
 .py is curently stable, 
 
-.exe is comming soon
+.exe V1 is released!
+
+![image](images/EXAMPLE1.png)
