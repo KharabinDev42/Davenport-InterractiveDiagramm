@@ -3,9 +3,7 @@
 #### Ceci est un outil interractif pour l'étude de l'état d'équilibration acidobasique 
 #### This is a tool for studying or monitoring acidobasis regulation in human physiology
 [Download the .exe](https://github.com/KharabinDev42/Davenport-InterractiveDiagramm/raw/97b7a64244c2142d58ac7e6ac25d5feb5fede69b/DAVENPORT_ITERRACTIVE_DIAGRAM.exe)
-
 ![image](images/EXAMPLE1.png)
-
 ## Usage
 Cet outil est a la fois a visée pédagogique, pour aider les étudiants en médecine, mais aussi pour les enseignants (produire simplement un diagramme), pour aider a comprendre l'equilibration acidobasique.
 C'est également  un outil pratique pour la clinique,  pour rapidement avoir une image graphique et claire de l'état acidobasique d'un patient.
