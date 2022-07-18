@@ -24,7 +24,7 @@ coded in python, GUI made via Tkinter and Tkinter Bootstrap, calculations and pl
 
 .py is curently stable, feel free to participate or use the code for other aplications, this is an open source project
 
-.exe V1 is released! / le .exe est disponible au téléchargement
+.exe V1 is released! / le .exe est disponible au téléchargement [here](https://github.com/KharabinDev42/Davenport-InterractiveDiagramm/raw/97b7a64244c2142d58ac7e6ac25d5feb5fede69b/DAVENPORT_ITERRACTIVE_DIAGRAM.exe)
 
 en France, cet outil sera très utile pour les étudiants en PASS/LASS paces.
 
