@@ -44,7 +44,7 @@ def locprinter():
     for i in printers:
         print_list.append(i[2])
     print(print_list)
-    # Put printers in combobox
+    
     PRCOMBO['values'] = print_list
     PRCOMBO.pack()
     def select():
@@ -62,7 +62,7 @@ def PRRINTTT():
     print(printerdef)
     filename = tempfile.mktemp(".png")
     open(filename, "w").write(printText)
-    # Bellow is call to print text from T2 textbox
+    
     win32api.ShellExecute(
         0,
         "printto",
@@ -93,7 +93,7 @@ def print_file():
 
 
 
-#window  = ttk.Window(themename="marcoooo")
+
 window  = ttk.Window(themename="darkly")
 
 
@@ -130,7 +130,6 @@ if LanguageBUTTOnFRVAR=='EN':
 
 
 
-
 CONCLUSIONLabel = ttk.Labelframe(SETINGSFRAME,text ="Etat du patient",bootstyle="light")
 CONCLUSIONLabel.pack(side=TOP, padx=2, pady=5, fill =X)
 
@@ -141,15 +140,10 @@ PARAMETERSLabel = ttk.Labelframe(SETINGSFRAME,text ="Paramètres",bootstyle="lig
 PARAMETERSLabel.pack(side=BOTTOM, padx=2, pady=5)
 
 
-
-
-
 BICAR = 24
 
 PHFRAME = ttk.Labelframe(PARAMETERSLabel,text ="PH",bootstyle="PRIMARY")
 PHFRAME.pack(expand = YES,side=BOTTOM, padx=2, pady=3)
-
-
 
 
 BICFRAME = ttk.Labelframe(PARAMETERSLabel,text ="HCO3-",bootstyle="PRIMARY")
@@ -168,8 +162,6 @@ SEPTTTPH.pack(side=LEFT, padx=3, pady=5,fill= X)
 
 COMAA = ttk.Label(PHFRAME,bootstyle=" warning",text=',')
 COMAA.pack(side=LEFT, padx=3, pady=10)
-
-
 
 
 test43 = ttk.Meter(PHFRAME,
@@ -213,10 +205,6 @@ trente = ttk.Radiobutton(PENTEFRAME,bootstyle="toolbutton, warning", text='25',v
 trente.pack(side=RIGHT, padx=3, pady=10)
 
 
-
-
-
-
 def browsefunc():
     global plot1
     global fig
@@ -240,14 +228,6 @@ SAVEEE = ttk.Button(PARAMETERSLabel,text ="Enregistrer l'image sous",bootstyle="
 SAVEEE.pack(side=BOTTOM, padx=1, pady=3, fill =X)
 
 
-m = ttk.Menu(window, tearoff = 0)
-m.add_command(label ="Cut")
-m.add_command(label ="Copy")
-m.add_command(label ="Paste")
-m.add_command(label ="Reload")
-m.add_separator()
-m.add_command(label ="Rename")
-
 
 
 def _on_mousewheel(event):
@@ -256,7 +236,6 @@ def _on_mousewheel(event):
     
 
     
-
 stateclickR = None
 def Activate_change(event):
     
@@ -281,7 +260,6 @@ def Activate_change(event):
         test43.bind_all("<MouseWheel>", _on_mousewheel)
 
     
-
 def _on_mousewheelBIC(event):
     test44.step((-1 *(event.delta/ 120)))
     
@@ -311,9 +289,7 @@ def Activate_changeBIC(event):
 
 
    
-        
-   
-
+       
 def HighlightAndGo(event):
     
     test43.configure(bootstyle=INFO)
@@ -338,14 +314,12 @@ def hover_this_leave(event):
     ph= test43.amountusedvar.get()
 
    
-    
     BICAR = test44.amountusedvar.get()
 
     
     global radioValue
     radioValueee = radioValue.get()
    
-
 
     global radioValuePHH
     radioValuePHHHH = radioValuePHH.get()
@@ -376,7 +350,6 @@ def hover_this_leaveBIC(event):
     
     ph= test43.amountusedvar.get()
 
- 
     
     BICAR = test44.amountusedvar.get()
 
@@ -384,7 +357,6 @@ def hover_this_leaveBIC(event):
     global radioValue
     radioValueee = radioValue.get()
    
-
 
     global radioValuePHH
     radioValuePHHHH = radioValuePHH.get()
@@ -400,10 +372,7 @@ def hover_this_leaveBIC(event):
     STATTE.config(text=etat)
     PURETEESTATTE.config(text=pureteee)
 
-    
-
-
-    
+   
 
 test43.bind("<Enter>", hover_this_enter)
 test43.bind("<Leave>", hover_this_leave)
@@ -412,9 +381,6 @@ test44.bind("<Enter>", hover_this_enterBIC)
 test44.bind("<Leave>", hover_this_leaveBIC)
 
 
-
-
-  
 def do_popup(event):
     try:
         m.tk_popup(event.x_root, event.y_root)
@@ -422,7 +388,6 @@ def do_popup(event):
         m.grab_release()
   
 window.bind("<Button-3>", do_popup)  
-
 
   
 def plot(phbase,ph,BICAR,radioValue): 
@@ -437,8 +402,6 @@ def plot(phbase,ph,BICAR,radioValue):
         canvas.get_tk_widget().destroy()
        
      
-
-    
     
     fig = Figure(figsize = (160, 160), 
                  dpi = 110) 
@@ -576,7 +539,6 @@ def plot(phbase,ph,BICAR,radioValue):
     
     canvas = FigureCanvasTkAgg(fig, master = window) 
     
- 
     
     canvas.get_tk_widget().pack() 
     canvas.get_tk_widget().pack() 
@@ -711,9 +673,7 @@ def TRADUCTOR(event):
         test43.configure(subtext='fine ph tunning')
 
 
-
 LanguageBUTTOnFR.bind("<Button-1>", TRADUCTOR)
 LanguageBUTTOnEN.bind("<Button-1>", TRADUCTOR)
 
 window.mainloop()
-
